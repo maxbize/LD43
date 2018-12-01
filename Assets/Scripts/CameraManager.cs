@@ -8,22 +8,21 @@ public class CameraManager : MonoBehaviour {
     public float boomHeight;
     public float boomDistance;
 
+    private Overlord overlord;
     private Rigidbody overlordRb;
     private Vector3 lookTarget;
 
 	// Use this for initialization
 	void Start () {
-        overlordRb = FindObjectOfType<Overlord>().GetComponent<Rigidbody>();
+        overlord = FindObjectOfType<Overlord>();
+        overlordRb = overlord.GetComponent<Rigidbody>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        Vector3 overlordDir = overlordRb.velocity.normalized;
-        overlordDir.y = 0;
-
-        transform.position = overlordRb.position - overlordDir * boomDistance + Vector3.up * boomHeight;
+        transform.position = overlord.transform.position + Vector3.back * boomDistance + Vector3.up * boomHeight;
 
         Vector3 toOverlord = (overlordRb.position - transform.position).normalized;
-        transform.rotation = Quaternion.LookRotation(toOverlord);
+        //transform.rotation = Quaternion.LookRotation(toOverlord);
 	}
 }

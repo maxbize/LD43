@@ -22,10 +22,10 @@ GameObject:
   - component: {fileID: 33495909438526358}
   - component: {fileID: 23892807547968608}
   - component: {fileID: 135735099451311230}
+  - component: {fileID: 114028985773969218}
   - component: {fileID: 54128595807472730}
   - component: {fileID: 114856647982053804}
   - component: {fileID: 136233279858081188}
-  - component: {fileID: 114028985773969218}
   m_Layer: 0
   m_Name: Melee Enemy
   m_TagString: Untagged
