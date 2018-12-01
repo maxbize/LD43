@@ -1174,7 +1174,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   acceleration: 100
-  dragCoefficient: 1
+  dragCoefficient: 0.8
   frictionCoefficient: 10
 --- !u!1001 &944877145
 Prefab:

@@ -24,11 +24,17 @@ public class CharController : MonoBehaviour {
 
     // Takes the user input and makes the overlord actually move
     public void HandleMovement(Vector3 input) {
-        float force = input.magnitude * acceleration;
-        force -= (rb.velocity.magnitude * rb.velocity.magnitude) * dragCoefficient;
+        Vector3 inputForce = input * acceleration;
 
-        Vector3 friction = frictionCoefficient * -rb.velocity.normalized;
+        // There's a bug here!
+        Vector3 dragForce = -rb.velocity.normalized * (rb.velocity.sqrMagnitude * dragCoefficient);
 
-        rb.AddForce(input * force + friction);
+        Vector3 frictionForce = frictionCoefficient * -rb.velocity.normalized;
+
+        rb.AddForce(inputForce + dragForce + frictionForce);
+
+        if (rb.velocity.magnitude > 20) {
+            //Debug.Log("force: " + force + "; friction: " + friction.magnitude + "; input: " + input.magnitude + "; vel: " + rb.velocity.magnitude);
+        }
     }
 }
