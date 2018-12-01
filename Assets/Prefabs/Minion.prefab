@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4547696630860802}
   - component: {fileID: 33495909438526358}
   - component: {fileID: 23892807547968608}
-  - component: {fileID: 135735099451311230}
   - component: {fileID: 114663966101954928}
   - component: {fileID: 114058606275034910}
   - component: {fileID: 54128595807472730}
@@ -145,18 +144,6 @@ MonoBehaviour:
   dragCoefficient: 0.5
   frictionCoefficient: 10
   extraGravityMultiplier: 3
---- !u!135 &135735099451311230
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1616473119905936}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!136 &136233279858081188
 CapsuleCollider:
   m_ObjectHideFlags: 1

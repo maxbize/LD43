@@ -28,6 +28,7 @@ public class HardenedMinion : MonoBehaviour {
         doneExpandingTime = Time.timeSinceLevelLoad + animationTime;
         initialScale = transform.localScale;
         Destroy(GetComponent<Rigidbody>());
+        GetComponent<CapsuleCollider>().height = 1;
     }
 	
 	// Update is called once per frame
