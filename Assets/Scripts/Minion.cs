@@ -29,7 +29,7 @@ public class Minion : MonoBehaviour, IKillable {
 
     private void FixedUpdate() {
         if (!controlled) {
-            MoveTowards(transform.position);
+            //MoveTowards(transform.position);
         }
     }
 
@@ -50,6 +50,14 @@ public class Minion : MonoBehaviour, IKillable {
 
     public void Harden() {
         GetComponent<HardenedMinion>().Expand();
+        if (overlord != null) {
+            overlord.NotifyMinionDied(this);
+        }
+        Destroy(this);
+    }
+
+    public void Kamikaze(Vector3 target) {
+        GetComponent<KamikazeMinion>().Init(target);
         if (overlord != null) {
             overlord.NotifyMinionDied(this);
         }

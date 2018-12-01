@@ -36,4 +36,9 @@ public class CharController : MonoBehaviour {
 
         rb.AddForce(inputForce + dragForce + frictionForce + extraGravityForce);
     }
+
+    public void DisableGravity() {
+        GetComponent<Rigidbody>().useGravity = false;
+        extraGravityMultiplier = 0;
+    }
 }

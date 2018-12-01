@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 23892807547968608}
   - component: {fileID: 114663966101954928}
   - component: {fileID: 114058606275034910}
+  - component: {fileID: 114956073045228354}
   - component: {fileID: 54128595807472730}
   - component: {fileID: 114856647982053804}
   - component: {fileID: 136233279858081188}
@@ -144,6 +145,23 @@ MonoBehaviour:
   dragCoefficient: 0.5
   frictionCoefficient: 10
   extraGravityMultiplier: 3
+--- !u!114 &114956073045228354
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1616473119905936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3525c1b7318e41b4881f1396a25d7fed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathRadius: 2
+  pushRadius: 4
+  pushImpulse: 100
+  pushUpModifer: 0.1
+  accel: 200
+  drag: 0.2
 --- !u!136 &136233279858081188
 CapsuleCollider:
   m_ObjectHideFlags: 1

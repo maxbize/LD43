@@ -33,6 +33,8 @@ public class Overlord : MonoBehaviour, IKillable {
         if (closestMinion != null) {
             if (Input.GetKeyDown(KeyCode.E)) {
                 closestMinion.Harden();
+            } else if (Input.GetKeyDown(KeyCode.Q)) {
+                closestMinion.Kamikaze(GetMousePos());
             }
         }
     }
