@@ -41,8 +41,4 @@ public class Projectile : MonoBehaviour {
         // TODO: Should this be a deathray?
         Destroy(gameObject);
     }
-
-    public bool IsFriendly() {
-        return false;
-    }
 }
