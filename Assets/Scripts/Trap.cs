@@ -20,7 +20,7 @@ public class Trap : MonoBehaviour {
 	}
 
     private void OnTriggerEnter(Collider other) {
-        Killable hit = other.transform.GetComponent<Killable>();
+        IKillable hit = other.transform.GetComponent<IKillable>();
         if (hit != null) {
             hit.Kill();
             victims++;

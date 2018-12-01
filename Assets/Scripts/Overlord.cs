@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Overlord : MonoBehaviour, Killable {
+public class Overlord : MonoBehaviour, IKillable {
 
     // Set in editor
     public Camera mainCamera;
@@ -72,5 +72,9 @@ public class Overlord : MonoBehaviour, Killable {
 
     public void Kill() {
         Destroy(gameObject);
+    }
+
+    public bool IsFriendly() {
+        return true;
     }
 }

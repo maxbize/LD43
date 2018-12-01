@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MeleeEnemy : MonoBehaviour {
+public class MeleeEnemy : MonoBehaviour, IKillable {
 
     private Overlord overlord;
     private CharController charController;
@@ -30,13 +30,13 @@ public class MeleeEnemy : MonoBehaviour {
         if (collision.transform.GetComponent<Overlord>() != null) {
             Kill();
         }
-        Minion minion = collision.transform.GetComponent<Minion>();
-        if (minion != null && minion.controlled) {
-            Kill();
-        }
     }
 
     public void Kill() {
         Destroy(gameObject);
+    }
+
+    public bool IsFriendly() {
+        return false;
     }
 }

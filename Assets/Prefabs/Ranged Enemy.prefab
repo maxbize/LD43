@@ -22,12 +22,12 @@ GameObject:
   - component: {fileID: 33495909438526358}
   - component: {fileID: 23892807547968608}
   - component: {fileID: 135735099451311230}
-  - component: {fileID: 114663966101954928}
   - component: {fileID: 54128595807472730}
   - component: {fileID: 114856647982053804}
   - component: {fileID: 136233279858081188}
+  - component: {fileID: 114576534499021132}
   m_Layer: 0
-  m_Name: Minion
+  m_Name: Ranged Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40,7 +40,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1616473119905936}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.123217, y: 0.5, z: -4.262374}
+  m_LocalPosition: {x: -17.629158, y: 1.75, z: -8.438961}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -61,7 +61,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 80db15930aefd754883cdcefbe3f6bbd, type: 2}
+  - {fileID: 2100000, guid: 2e41eb744de45b94393415215533fa00, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -103,7 +103,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &114663966101954928
+--- !u!114 &114576534499021132
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -111,10 +111,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1616473119905936}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: babb86ca19dfdf44a949d24632ec6bdf, type: 3}
+  m_Script: {fileID: 11500000, guid: 5b6c238eaecbf65468bcdc997ab0988d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controlDistance: 5
+  attackFrequency: 5
+  projectilePrefab: {fileID: 1480843394996076, guid: 3c3c179c7b34de44191a0470ee799580,
+    type: 2}
 --- !u!114 &114856647982053804
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -126,7 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4a9ffc210ed7ce499e9d6afb60cf997, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acceleration: 100
+  acceleration: 50
   dragCoefficient: 0.5
   frictionCoefficient: 10
   extraGravityMultiplier: 0

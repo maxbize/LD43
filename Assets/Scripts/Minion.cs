@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Minion : MonoBehaviour, Killable {
+public class Minion : MonoBehaviour, IKillable {
 
     // Set in editor
     public float controlDistance;
@@ -41,7 +41,9 @@ public class Minion : MonoBehaviour, Killable {
     }
 
     private void OnCollisionEnter(Collision collision) {
-        if (collision.transform.GetComponent<MeleeEnemy>() != null && controlled) {
+        IKillable hit = collision.transform.GetComponent<IKillable>();
+        if (hit != null && !hit.IsFriendly()) {
+            hit.Kill();
             Kill();
         }
     }
@@ -51,6 +53,10 @@ public class Minion : MonoBehaviour, Killable {
             overlord.NotifyMinionDied(this);
         }
         Destroy(gameObject);
+    }
+
+    public bool IsFriendly() {
+        return true;
     }
 
 }
