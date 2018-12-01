@@ -28,12 +28,15 @@ public class MeleeEnemy : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision) {
         if (collision.transform.GetComponent<Overlord>() != null) {
-            Destroy(gameObject);
+            Kill();
         }
         Minion minion = collision.transform.GetComponent<Minion>();
         if (minion != null && minion.controlled) {
-            Destroy(gameObject);
+            Kill();
         }
     }
 
+    public void Kill() {
+        Destroy(gameObject);
+    }
 }

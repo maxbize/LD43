@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Minion : MonoBehaviour {
+public class Minion : MonoBehaviour, Killable {
 
     // Set in editor
     public float controlDistance;
@@ -19,7 +19,7 @@ public class Minion : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-		if (!controlled) {
+		if (!controlled && overlord != null) {
             if (Vector3.Distance(transform.position, overlord.transform.position) < controlDistance) {
                 controlled = true;
                 overlord.NotifyMinionControlled(this);
@@ -42,11 +42,15 @@ public class Minion : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision) {
         if (collision.transform.GetComponent<MeleeEnemy>() != null && controlled) {
-            if (overlord != null) {
-                overlord.NotifyMinionDied(this);
-            }
-            Destroy(gameObject);
+            Kill();
         }
+    }
+
+    public void Kill() {
+        if (overlord != null) {
+            overlord.NotifyMinionDied(this);
+        }
+        Destroy(gameObject);
     }
 
 }

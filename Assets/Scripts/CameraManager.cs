@@ -20,6 +20,9 @@ public class CameraManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if (overlord == null) {
+            return;
+        }
         transform.position = overlord.transform.position + Vector3.back * boomDistance + Vector3.up * boomHeight;
 
         Vector3 toOverlord = (overlordRb.position - transform.position).normalized;

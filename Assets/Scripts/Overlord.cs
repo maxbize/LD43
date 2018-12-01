@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Overlord : MonoBehaviour {
+public class Overlord : MonoBehaviour, Killable {
 
     // Set in editor
     public Camera mainCamera;
@@ -58,7 +58,7 @@ public class Overlord : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision) {
         if (collision.transform.GetComponent<MeleeEnemy>() != null) {
-            Destroy(gameObject); 
+            Kill();
         }
     }
 
@@ -68,5 +68,9 @@ public class Overlord : MonoBehaviour {
 
     public void NotifyMinionControlled(Minion minion) {
         minions.Add(minion);
+    }
+
+    public void Kill() {
+        Destroy(gameObject);
     }
 }
