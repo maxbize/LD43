@@ -12,13 +12,13 @@ public class Overlord : MonoBehaviour {
     private Vector3 input;
 
     // Keep track of our minions
-    List<Minion> minions = new List<Minion>();
+    HashSet<Minion> minions = new HashSet<Minion>();
 
 	// Use this for initialization
 	void Start () {
         charController = GetComponent<CharController>();
 
-        minions = new List<Minion>(FindObjectsOfType<Minion>());
+        minions = new HashSet<Minion>(FindObjectsOfType<Minion>());
 	}
 	
 	// Update is called once per frame
@@ -29,9 +29,12 @@ public class Overlord : MonoBehaviour {
             Input.GetAxisRaw("Vertical")
         );
         input.Normalize();
-
-        MoveMinions();
 	}
+
+    private void FixedUpdate() {
+        charController.HandleMovement(input);
+        MoveMinions();
+    }
 
     // Tell the minions where to go
     private void MoveMinions() {
@@ -55,7 +58,13 @@ public class Overlord : MonoBehaviour {
         return Vector3.zero;
     }
 
-    private void FixedUpdate() {
-        charController.HandleMovement(input);
+    private void OnCollisionEnter(Collision collision) {
+        if (collision.transform.GetComponent<MeleeEnemy>() != null) {
+            Destroy(gameObject); 
+        }
+    }
+
+    public void NotifyMinionDied(Minion deadMinion) {
+        minions.Remove(deadMinion);
     }
 }

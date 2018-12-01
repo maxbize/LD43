@@ -23,4 +23,11 @@ public class Minion : MonoBehaviour {
         charController.HandleMovement(toPos);
     }
 
+    private void OnCollisionEnter(Collision collision) {
+        if (collision.transform.GetComponent<MeleeEnemy>() != null) {
+            FindObjectOfType<Overlord>().NotifyMinionDied(this);
+            Destroy(gameObject);
+        }
+    }
+
 }
