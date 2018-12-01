@@ -160,8 +160,7 @@ MonoBehaviour:
   pushRadius: 4
   pushImpulse: 100
   pushUpModifer: 0.1
-  accel: 200
-  drag: 0.2
+  incendiaryTime: 3
 --- !u!136 &136233279858081188
 CapsuleCollider:
   m_ObjectHideFlags: 1

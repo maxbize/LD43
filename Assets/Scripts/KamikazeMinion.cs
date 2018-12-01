@@ -9,43 +9,23 @@ public class KamikazeMinion : MonoBehaviour {
     public float pushRadius;
     public float pushImpulse;
     public float pushUpModifer;
-    public float accel;
-    public float drag;
+    public float incendiaryTime; // therealhammer86gn might be on an FBI watchlist for knowing this ;)
 
-    private Vector3 dir;
-    private bool launched;
-    private CharController charController;
+    private float explodeAtTime = Mathf.Infinity;
 
 	public void Init(Vector3 target) {
         Destroy(GetComponent<Minion>());
-        GetComponent<Collider>().isTrigger = true;
-        charController = GetComponent<CharController>();
-        dir = (target - transform.position).normalized;
-        dir.y = 0;
-        launched = true;
-        charController.DisableGravity();
-        transform.position += Vector3.up * 0.2f; // Sometimes we clip the ground!
-        charController.dragCoefficient = drag; // HACK - shouldn't modify this directly
-        charController.acceleration = accel; // HACK - shouldn't modify this directly
-        charController.frictionCoefficient = 0; // HACK - shouldn't modify this directly
+        explodeAtTime = Time.timeSinceLevelLoad + incendiaryTime;
+        GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
     }
 
-    private void FixedUpdate() {
-        if (launched) {
-            charController.HandleMovement(dir);
+    private void Update() {
+        if (Time.timeSinceLevelLoad > explodeAtTime) {
+            Explode();
         }
     }
 
-    private void OnTriggerEnter(Collider other) {
-        if (!launched) {
-            return;
-        }
-
-        IKillable hitKillable = other.GetComponent<IKillable>();
-        if (hitKillable != null && hitKillable.IsFriendly()) {
-            return;
-        }
-
+    private void Explode() {
         foreach (Collider hit in Physics.OverlapSphere(transform.position, deathRadius)) {
             IKillable killable = hit.transform.GetComponent<IKillable>();
             if (killable != null) {
