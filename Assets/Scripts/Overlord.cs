@@ -17,8 +17,6 @@ public class Overlord : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         charController = GetComponent<CharController>();
-
-        minions = new HashSet<Minion>(FindObjectsOfType<Minion>());
 	}
 	
 	// Update is called once per frame
@@ -66,5 +64,9 @@ public class Overlord : MonoBehaviour {
 
     public void NotifyMinionDied(Minion deadMinion) {
         minions.Remove(deadMinion);
+    }
+
+    public void NotifyMinionControlled(Minion minion) {
+        minions.Add(minion);
     }
 }
