@@ -74,7 +74,7 @@ public class Overlord : MonoBehaviour, IKillable {
         RaycastHit hit;
         Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
 
-        if (Physics.Raycast(ray, out hit)) {
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask.GetMask("MouseCast"))) {
             Vector3 point = hit.point;
             point.y = 0;
             return point;

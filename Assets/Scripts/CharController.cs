@@ -25,6 +25,10 @@ public class CharController : MonoBehaviour {
 
     // Takes the user input and makes the overlord actually move
     public void HandleMovement(Vector3 input) {
+        if (rb == null) {
+            return; // HACK!!! Should find the null reference
+        }
+
         Vector3 inputForce = input * acceleration;
 
         Vector3 dragForce = -rb.velocity.normalized * (rb.velocity.sqrMagnitude * dragCoefficient);
