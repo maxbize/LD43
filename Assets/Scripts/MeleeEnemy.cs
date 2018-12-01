@@ -14,7 +14,9 @@ public class MeleeEnemy : MonoBehaviour {
     }
 
     void FixedUpdate() {
-        MoveTowardsOverlord();
+        if (overlord != null) {
+            MoveTowardsOverlord();
+        }
     }
 
     // Called every frame - command from the overlord where we should walk towards
