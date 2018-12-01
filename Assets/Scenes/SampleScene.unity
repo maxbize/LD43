@@ -2064,6 +2064,7 @@ MonoBehaviour:
   rangedEnemyPrefab: {fileID: 1616473119905936, guid: 7ec6bf6dc4d3132488dd66da879c7f06,
     type: 2}
   trapPrefab: {fileID: 1570077280130182, guid: c90a5cf78749eb84f8ae6116a1a98940, type: 2}
+  ground: {fileID: 299398734}
 --- !u!4 &1444352358
 Transform:
   m_ObjectHideFlags: 0

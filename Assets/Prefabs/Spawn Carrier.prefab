@@ -125,7 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6a543b965378d24eb5eb8afa41bef8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coneAngle: 60
+  coneAngle: 45
 --- !u!114 &114655807266374674
 MonoBehaviour:
   m_ObjectHideFlags: 1

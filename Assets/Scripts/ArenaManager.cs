@@ -9,6 +9,7 @@ public class ArenaManager : MonoBehaviour {
     public GameObject meleeEnemyPrefab;
     public GameObject rangedEnemyPrefab;
     public GameObject trapPrefab;
+    public GameObject ground;
 
 	// Use this for initialization
 	void Start () {
@@ -17,13 +18,19 @@ public class ArenaManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown(KeyCode.Space)) {
+		if (Input.GetKey(KeyCode.Space)) {
             SpawnSomething(); // TODO: Remove this debug before publishing
         }
 	}
 
     private void SpawnSomething() {
-        Vector3 spawnPoint = Vector3.zero;
+        // Groud object is scaled 10:1 for real world size & don't let it go to the edge
+        Vector3 spawnPoint = new Vector3(
+            Random.Range(-ground.transform.localScale.x * 4.5f, ground.transform.localScale.x * 4.5f),
+            0,
+            Random.Range(-ground.transform.localScale.z * 4.5f, ground.transform.localScale.z * 4.5f)
+        );
+        spawnPoint += ground.transform.position;
 
         GameObject spawnCarrier = Instantiate(spawnCarrierPrefab, Vector3.down * 10, Quaternion.identity);
         spawnCarrier.GetComponent<SpawnCarrier>().Init(meleeEnemyPrefab, spawnPoint);
