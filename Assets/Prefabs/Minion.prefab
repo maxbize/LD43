@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 23892807547968608}
   - component: {fileID: 135735099451311230}
   - component: {fileID: 114663966101954928}
+  - component: {fileID: 114058606275034910}
   - component: {fileID: 54128595807472730}
   - component: {fileID: 114856647982053804}
   - component: {fileID: 136233279858081188}
@@ -103,6 +104,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &114058606275034910
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1616473119905936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d990e9279319f4e40a44f6eac16b0803, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationTime: 0.25
+  expansionSize: 5
+  hardenTime: 10
 --- !u!114 &114663966101954928
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -129,7 +144,7 @@ MonoBehaviour:
   acceleration: 100
   dragCoefficient: 0.5
   frictionCoefficient: 10
-  extraGravityMultiplier: 0
+  extraGravityMultiplier: 3
 --- !u!135 &135735099451311230
 SphereCollider:
   m_ObjectHideFlags: 1

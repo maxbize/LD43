@@ -48,6 +48,14 @@ public class Minion : MonoBehaviour, IKillable {
         }
     }
 
+    public void Harden() {
+        GetComponent<HardenedMinion>().Expand();
+        if (overlord != null) {
+            overlord.NotifyMinionDied(this);
+        }
+        Destroy(this);
+    }
+
     public void Kill() {
         if (overlord != null) {
             overlord.NotifyMinionDied(this);

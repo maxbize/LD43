@@ -19,11 +19,6 @@ public class Projectile : MonoBehaviour {
         this.spawner = spawner;
     }
 
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
     private void FixedUpdate() {
         charController.HandleMovement(transform.forward);
     }

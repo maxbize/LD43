@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -27,7 +28,31 @@ public class Overlord : MonoBehaviour, IKillable {
             Input.GetAxisRaw("Vertical")
         );
         input.Normalize();
-	}
+
+        Minion closestMinion = GetMinionClosestToMouse();
+        if (closestMinion != null) {
+            if (Input.GetKeyDown(KeyCode.E)) {
+                closestMinion.Harden();
+            }
+        }
+    }
+
+    private Minion GetMinionClosestToMouse() {
+        Vector3 mousePos = GetMousePos();
+        float distanceToClosest = float.PositiveInfinity;
+        Minion closest = null;
+        foreach (Minion minion in minions) {
+            if (closest == null) {
+                closest = minion;
+            }
+            float distanceToMinion = Vector3.Distance(mousePos, minion.transform.position);
+            if (distanceToMinion < distanceToClosest) {
+                distanceToClosest = distanceToMinion;
+                closest = minion;
+            }
+        }
+        return closest;
+    }
 
     private void FixedUpdate() {
         charController.HandleMovement(input);
