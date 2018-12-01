@@ -11,7 +11,11 @@ public class Trap : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+        transform.position = new Vector3(
+            transform.position.x,
+            0,
+            transform.position.z
+        );
 	}
 	
 	// Update is called once per frame
@@ -20,14 +24,13 @@ public class Trap : MonoBehaviour {
 	}
 
     private void OnTriggerEnter(Collider other) {
-        IKillable hit = other.transform.GetComponent<IKillable>();
-        if (hit != null) {
-            hit.Kill();
+        IKillable killable = other.transform.GetComponent<IKillable>();
+        if (killable != null && killable.IsFriendly()) {
+            killable.Kill();
             victims++;
             if (victims == maxVictims) {
                 Destroy(gameObject);
             }
         }
-
     }
 }

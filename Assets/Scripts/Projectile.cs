@@ -24,7 +24,7 @@ public class Projectile : MonoBehaviour {
     }
 
     private void OnTriggerEnter(Collider other) {
-        if (other.gameObject == spawner) {
+        if (other.gameObject == spawner || other.GetComponent<Trap>() != null) {
             return;
         }
 
