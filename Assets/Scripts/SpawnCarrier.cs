@@ -33,6 +33,15 @@ public class SpawnCarrier : MonoBehaviour {
     }
 
     private void OnTriggerEnter(Collider other) {
+        if (other.transform.GetComponent<SpawnCarrier>() != null) {
+            return; // Don't trigger on other spawners
+        }
+
+        // MAJOR HACK!
+        if (other.name.IndexOf("invisible") >= 0) {
+            return; // Don't hit the invisible walls
+        }
+
         Instantiate(prefabToSpawn, transform.position + Vector3.up * 3, Quaternion.identity);
 
         Destroy(gameObject);
