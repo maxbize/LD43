@@ -5,16 +5,20 @@ using UnityEngine;
 public class Overlord : MonoBehaviour {
 
     // Set in editor
-    public float acceleration;
-    public float dragCoefficient;
-    public float frictionCoefficient;
+    public Camera mainCamera;
 
+    // Movement input
+    private CharController charController;
     private Vector3 input;
-    private Rigidbody rb;
+
+    // Keep track of our minions
+    List<Minion> minions = new List<Minion>();
 
 	// Use this for initialization
 	void Start () {
-        rb = GetComponent<Rigidbody>();
+        charController = GetComponent<CharController>();
+
+        minions = new List<Minion>(FindObjectsOfType<Minion>());
 	}
 	
 	// Update is called once per frame
@@ -25,19 +29,33 @@ public class Overlord : MonoBehaviour {
             Input.GetAxisRaw("Vertical")
         );
         input.Normalize();
+
+        MoveMinions();
 	}
 
-    private void FixedUpdate() {
-        HandleMovement();
+    // Tell the minions where to go
+    private void MoveMinions() {
+        Vector3 mouseHit = GetMousePos();
+        foreach (Minion minion in minions) {
+            minion.MoveTowards(mouseHit);
+        }
     }
 
-    // Takes the user input and makes the overlord actually move
-    private void HandleMovement() {
-        float force = input.magnitude * acceleration;
-        force -= (rb.velocity.magnitude * rb.velocity.magnitude) * dragCoefficient;
+    // Gets the position of the mouse in the world (on the ground plane)
+    private Vector3 GetMousePos() {
+        RaycastHit hit;
+        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
 
-        Vector3 friction = frictionCoefficient * -rb.velocity.normalized;
+        if (Physics.Raycast(ray, out hit)) {
+            Vector3 point = hit.point;
+            point.y = 0;
+            return point;
+        }
 
-        rb.AddForce(input * force + friction);
+        return Vector3.zero;
+    }
+
+    private void FixedUpdate() {
+        charController.HandleMovement(input);
     }
 }
