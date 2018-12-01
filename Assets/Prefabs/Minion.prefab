@@ -118,6 +118,7 @@ MonoBehaviour:
   acceleration: 100
   dragCoefficient: 1
   frictionCoefficient: 10
+  extraGravityMultiplier: 3
 --- !u!114 &114663966101954928
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -143,6 +144,7 @@ MonoBehaviour:
   acceleration: 100
   dragCoefficient: 0.5
   frictionCoefficient: 10
+  extraGravityMultiplier: 0
 --- !u!135 &135735099451311230
 SphereCollider:
   m_ObjectHideFlags: 1

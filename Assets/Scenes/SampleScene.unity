@@ -473,25 +473,7 @@ MonoBehaviour:
   acceleration: 100
   dragCoefficient: 1
   frictionCoefficient: 10
---- !u!1 &149593213 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1616473119905936, guid: 21a8d30b0017176458ab6db41996c88c,
-    type: 2}
-  m_PrefabInternal: {fileID: 986017664}
---- !u!114 &149593214
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 149593213}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4a9ffc210ed7ce499e9d6afb60cf997, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  acceleration: 100
-  dragCoefficient: 1
-  frictionCoefficient: 10
+  extraGravityMultiplier: 0
 --- !u!1 &170076733
 GameObject:
   m_ObjectHideFlags: 0
@@ -577,6 +559,7 @@ MonoBehaviour:
   acceleration: 100
   dragCoefficient: 1
   frictionCoefficient: 10
+  extraGravityMultiplier: 0
 --- !u!1001 &209894183
 Prefab:
   m_ObjectHideFlags: 0
@@ -821,6 +804,7 @@ MonoBehaviour:
   acceleration: 100
   dragCoefficient: 1
   frictionCoefficient: 10
+  extraGravityMultiplier: 0
 --- !u!1001 &474535068
 Prefab:
   m_ObjectHideFlags: 0
@@ -963,6 +947,7 @@ MonoBehaviour:
   acceleration: 100
   dragCoefficient: 1
   frictionCoefficient: 10
+  extraGravityMultiplier: 0
 --- !u!1 &689318882 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1616473119905936, guid: 21a8d30b0017176458ab6db41996c88c,
@@ -982,6 +967,7 @@ MonoBehaviour:
   acceleration: 100
   dragCoefficient: 1
   frictionCoefficient: 10
+  extraGravityMultiplier: 0
 --- !u!1 &774994154 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1616473119905936, guid: 21a8d30b0017176458ab6db41996c88c,
@@ -1001,6 +987,7 @@ MonoBehaviour:
   acceleration: 100
   dragCoefficient: 1
   frictionCoefficient: 10
+  extraGravityMultiplier: 0
 --- !u!1001 &784551302
 Prefab:
   m_ObjectHideFlags: 0
@@ -1129,7 +1116,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 868357225}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.91, z: 0}
+  m_LocalPosition: {x: -8.86, y: 0.91, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1173,9 +1160,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4a9ffc210ed7ce499e9d6afb60cf997, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acceleration: 100
-  dragCoefficient: 0.8
+  acceleration: 80
+  dragCoefficient: 0.5
   frictionCoefficient: 10
+  extraGravityMultiplier: 3
 --- !u!1001 &944877145
 Prefab:
   m_ObjectHideFlags: 0
@@ -1552,6 +1540,7 @@ MonoBehaviour:
   acceleration: 100
   dragCoefficient: 1
   frictionCoefficient: 10
+  extraGravityMultiplier: 0
 --- !u!1001 &1561954788
 Prefab:
   m_ObjectHideFlags: 0
@@ -1617,6 +1606,7 @@ MonoBehaviour:
   acceleration: 100
   dragCoefficient: 1
   frictionCoefficient: 10
+  extraGravityMultiplier: 0
 --- !u!1 &1637359008
 GameObject:
   m_ObjectHideFlags: 0
@@ -1721,6 +1711,7 @@ MonoBehaviour:
   acceleration: 100
   dragCoefficient: 1
   frictionCoefficient: 10
+  extraGravityMultiplier: 0
 --- !u!1001 &1841216137
 Prefab:
   m_ObjectHideFlags: 0
@@ -1786,6 +1777,7 @@ MonoBehaviour:
   acceleration: 100
   dragCoefficient: 1
   frictionCoefficient: 10
+  extraGravityMultiplier: 0
 --- !u!1 &1911603546 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1616473119905936, guid: 21a8d30b0017176458ab6db41996c88c,
@@ -1805,6 +1797,7 @@ MonoBehaviour:
   acceleration: 100
   dragCoefficient: 1
   frictionCoefficient: 10
+  extraGravityMultiplier: 0
 --- !u!1001 &1990384724
 Prefab:
   m_ObjectHideFlags: 0
@@ -1870,6 +1863,7 @@ MonoBehaviour:
   acceleration: 100
   dragCoefficient: 1
   frictionCoefficient: 10
+  extraGravityMultiplier: 0
 --- !u!1 &2029842478 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1616473119905936, guid: 21a8d30b0017176458ab6db41996c88c,
@@ -1889,3 +1883,4 @@ MonoBehaviour:
   acceleration: 100
   dragCoefficient: 1
   frictionCoefficient: 10
+  extraGravityMultiplier: 0

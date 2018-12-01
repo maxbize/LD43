@@ -9,6 +9,7 @@ public class CharController : MonoBehaviour {
     public float acceleration = 100;
     public float dragCoefficient = 1;
     public float frictionCoefficient = 10;
+    public float extraGravityMultiplier = 0;
 
     private Rigidbody rb;
 
@@ -26,15 +27,13 @@ public class CharController : MonoBehaviour {
     public void HandleMovement(Vector3 input) {
         Vector3 inputForce = input * acceleration;
 
-        // There's a bug here!
         Vector3 dragForce = -rb.velocity.normalized * (rb.velocity.sqrMagnitude * dragCoefficient);
 
         Vector3 frictionForce = frictionCoefficient * -rb.velocity.normalized;
+        frictionForce.y = 0;
 
-        rb.AddForce(inputForce + dragForce + frictionForce);
+        Vector3 extraGravityForce = Physics.gravity * extraGravityMultiplier;
 
-        if (rb.velocity.magnitude > 20) {
-            //Debug.Log("force: " + force + "; friction: " + friction.magnitude + "; input: " + input.magnitude + "; vel: " + rb.velocity.magnitude);
-        }
+        rb.AddForce(inputForce + dragForce + frictionForce + extraGravityForce);
     }
 }
