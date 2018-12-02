@@ -6,6 +6,7 @@ public class Minion : MonoBehaviour, IKillable {
 
     // Set in editor
     public float controlDistance;
+    public Material claimedMat;
 
     private CharController charController;
     private Overlord overlord;
@@ -24,6 +25,8 @@ public class Minion : MonoBehaviour, IKillable {
                 controlled = true;
                 overlord.NotifyMinionControlled(this);
                 gameObject.layer = LayerMask.NameToLayer("Friendly");
+                gameObject.transform.GetChild(0).GetComponent<Renderer>().material = claimedMat; // MASSIVE HACK
+                charController.HandleMovement(Vector3.up * 10f);
             }
         }
 	}
