@@ -149,6 +149,7 @@ MonoBehaviour:
   animationTime: 0.25
   expansionSize: 5
   hardenTime: 10
+  shieldSprite: {fileID: 21300000, guid: 8053a8fec0d966546bbed4cfa8413566, type: 3}
 --- !u!114 &114511367227277910
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -178,6 +179,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controlDistance: 5
+  claimedMat: {fileID: 2100000, guid: 80db15930aefd754883cdcefbe3f6bbd, type: 2}
 --- !u!114 &114856647982053804
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -209,6 +211,8 @@ MonoBehaviour:
   pushImpulse: 100
   pushUpModifer: 0.1
   incendiaryTime: 3
+  explostionDuration: 0.1
+  explodedSprite: {fileID: 21300000, guid: 01abdd2b9cdc06a4388e9cfc2e04d31c, type: 3}
 --- !u!136 &136233279858081188
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -237,7 +241,7 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 80db15930aefd754883cdcefbe3f6bbd, type: 2}
+  - {fileID: 2100000, guid: 77a86fca7d24e2546b2a1a15c27fc7b5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

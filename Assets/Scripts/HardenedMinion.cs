@@ -8,6 +8,7 @@ public class HardenedMinion : MonoBehaviour {
     public float animationTime; // Length of animation
     public float expansionSize; // Scale fully expanded
     public float hardenTime; // How long to stay hardened
+    public Sprite shieldSprite;
 
     private float doneExpandingTime;
     private float doneHardeningTime;
@@ -39,6 +40,7 @@ public class HardenedMinion : MonoBehaviour {
         Destroy(GetComponent<Rigidbody>());
         GetComponent<CapsuleCollider>().height = 1;
         gameObject.layer = LayerMask.NameToLayer("Ignore Friendly");
+        transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = shieldSprite; // HACK!
     }
 
     // Update is called once per frame

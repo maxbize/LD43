@@ -10,28 +10,34 @@ public class KamikazeMinion : MonoBehaviour {
     public float pushImpulse;
     public float pushUpModifer;
     public float incendiaryTime; // therealhammer86gn might be on an FBI watchlist for knowing this ;)
+    public float explostionDuration; // visual
+    public Sprite explodedSprite;
 
     private float explodeAtTime = Mathf.Infinity;
+    private float destroyAtTime = Mathf.Infinity;
     private CharController charController;
     private Vector3 target;
+    private Material spriteMaterial;
+    private Color startingColor;
 
     private KamikazeState kamikazeState;
     private enum KamikazeState {
         waiting,
         moving,
-        triggered
+        triggered,
+        exploded,
     }
-
 
 	public void Init(Vector3 target) {
         charController = GetComponent<CharController>();
         this.target = target;
         kamikazeState = KamikazeState.moving;
         gameObject.layer = LayerMask.NameToLayer("Ignore All");
+        spriteMaterial = transform.GetChild(0).GetComponent<SpriteRenderer>().material; // HACK
+        startingColor = spriteMaterial.color;
     }
 
     private void FixedUpdate() {
-
         if (kamikazeState == KamikazeState.waiting) {
             // Do nothing
         } else if (kamikazeState == KamikazeState.moving) {
@@ -41,12 +47,25 @@ public class KamikazeMinion : MonoBehaviour {
             if (toTarget.magnitude < 0.1f) {
                 explodeAtTime = Time.timeSinceLevelLoad + incendiaryTime;
                 kamikazeState = KamikazeState.triggered;
-                //GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition; // Do we want this??
             }
-        } else {
+        } else if (kamikazeState == KamikazeState.triggered) {
+            float t = 1f - (explodeAtTime - Time.timeSinceLevelLoad) / incendiaryTime;
+            spriteMaterial.color = new Color(startingColor.r + Mathf.Sin(Time.timeSinceLevelLoad + (1 + 7 * t) * (1 + 7 * t)), 
+                startingColor.g, startingColor.b);
             if (Time.timeSinceLevelLoad > explodeAtTime) {
                 Explode();
+                destroyAtTime = Time.timeSinceLevelLoad + explostionDuration;
+                transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = explodedSprite;
+                GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition; // Do we want this??
+                transform.localScale *= (deathRadius + pushRadius) / 2f;
+                kamikazeState = KamikazeState.exploded;
             }
+        } else if (kamikazeState == KamikazeState.exploded) {
+            if (Time.timeSinceLevelLoad > destroyAtTime) {
+                Destroy(gameObject);
+            }
+        } else {
+            Debug.LogError("Unexpected state");
         }
     }
 
@@ -65,7 +84,5 @@ public class KamikazeMinion : MonoBehaviour {
                 rb.AddExplosionForce(pushImpulse, transform.position, pushRadius, pushUpModifer, ForceMode.Impulse);
             }
         }
-
-        Destroy(gameObject);
     }
 }
