@@ -187,7 +187,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   acceleration: 50
-  dragCoefficient: 0.2
+  dragCoefficient: 0.5
   frictionCoefficient: 0
   extraGravityMultiplier: 0
 --- !u!212 &212602544114038088

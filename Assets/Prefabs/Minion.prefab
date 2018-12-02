@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4400281967268818}
   - component: {fileID: 212295280225175580}
   - component: {fileID: 114511367227277910}
-  m_Layer: 16
+  m_Layer: 19
   m_Name: Minion sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 54128595807472730}
   - component: {fileID: 114856647982053804}
   - component: {fileID: 136233279858081188}
-  m_Layer: 16
+  m_Layer: 19
   m_Name: Minion
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -23,6 +23,7 @@ public class Minion : MonoBehaviour, IKillable {
             if (Vector3.Distance(transform.position, overlord.transform.position) < controlDistance) {
                 controlled = true;
                 overlord.NotifyMinionControlled(this);
+                gameObject.layer = LayerMask.NameToLayer("Friendly");
             }
         }
 	}
@@ -42,7 +43,7 @@ public class Minion : MonoBehaviour, IKillable {
 
     private void OnCollisionEnter(Collision collision) {
         IKillable hit = collision.transform.GetComponent<IKillable>();
-        if (hit != null && !hit.IsFriendly()) {
+        if (hit != null && !hit.IsFriendly() && controlled) {
             hit.Kill();
             Kill();
         }

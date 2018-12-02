@@ -16,47 +16,65 @@ public class ArenaManager : MonoBehaviour {
     private float nextMinionSpawnTime;
     private float nextRangedEnemySpawnTime;
     private float nextTrapSpawnTime;
+    private float nextDifficultyRampTime;
+    private int difficulty = 0;
+    private Overlord overlord;
 
 	// Use this for initialization
 	void Start () {
         SpawnCluster(minionPrefab, 5, 5);
-        nextMeleeEnemySpawnTime = Time.timeSinceLevelLoad + 3f;
-        nextMinionSpawnTime = Time.timeSinceLevelLoad + 5f;
-        nextRangedEnemySpawnTime = Time.timeSinceLevelLoad + 20f;
-        nextTrapSpawnTime = Time.timeSinceLevelLoad + 10f;
+        nextMeleeEnemySpawnTime = Time.timeSinceLevelLoad + 5f;
+        nextMinionSpawnTime = Time.timeSinceLevelLoad + 10f;
+        nextRangedEnemySpawnTime = Time.timeSinceLevelLoad + 60f;
+        nextTrapSpawnTime = Time.timeSinceLevelLoad + 30f;
+        overlord = FindObjectOfType<Overlord>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown(KeyCode.Space)) {
-            SpawnCluster(minionPrefab, 3, 6); // TODO: Remove this debug before publishing
+        if (overlord == null) {
+            return;
         }
 
-        if (Time.timeSinceLevelLoad > nextMeleeEnemySpawnTime) {
-            SpawnCluster(meleeEnemyPrefab, 2, 3);
-            SpawnCluster(meleeEnemyPrefab, 2, 3);
-            nextMeleeEnemySpawnTime = Time.timeSinceLevelLoad + 7f;
+		if (Input.GetKeyDown(KeyCode.Space)) {
+            //SpawnCluster(minionPrefab, 3, 6); // TODO: Remove this debug before publishing
+        }
+
+        if (Time.timeSinceLevelLoad > nextDifficultyRampTime) {
+            difficulty++;
+            nextDifficultyRampTime = Time.timeSinceLevelLoad + 30f;
         }
 
         if (Time.timeSinceLevelLoad > nextMinionSpawnTime) {
-            SpawnCluster(minionPrefab, 2, 3);
-            SpawnCluster(minionPrefab, 2, 3);
-            nextMinionSpawnTime = Time.timeSinceLevelLoad + 10f;
+            int min = 3 + Mathf.FloorToInt(difficulty / 1.5f);
+            int max = 4 + Mathf.FloorToInt(difficulty / 1.5f);
+            SpawnCluster(minionPrefab, min, max);
+            SpawnCluster(minionPrefab, min, max);
+            nextMinionSpawnTime = Time.timeSinceLevelLoad + 5f;
+        }
+
+        if (Time.timeSinceLevelLoad > nextMeleeEnemySpawnTime) {
+            int min = 2 + Mathf.FloorToInt(difficulty * 2f);
+            int max = 3 + Mathf.FloorToInt(difficulty * 2f);
+            SpawnCluster(meleeEnemyPrefab, min, max);
+            SpawnCluster(meleeEnemyPrefab, min, max);
+            nextMeleeEnemySpawnTime = Time.timeSinceLevelLoad + 9f;
         }
 
         if (Time.timeSinceLevelLoad > nextRangedEnemySpawnTime) {
-            SpawnSomething(rangedEnemyPrefab, GetRandomPointInArena());
-            SpawnSomething(rangedEnemyPrefab, GetRandomPointInArena());
-            SpawnSomething(rangedEnemyPrefab, GetRandomPointInArena());
-            nextRangedEnemySpawnTime = Time.timeSinceLevelLoad + 15f;
+            int numToSpawn = difficulty;
+            for (int i = 0; i < difficulty; i++) {
+                SpawnSomething(rangedEnemyPrefab, GetRandomPointInArena());
+            }
+            nextRangedEnemySpawnTime = Time.timeSinceLevelLoad + 30f;
         }
 
         if (Time.timeSinceLevelLoad > nextTrapSpawnTime) {
-            if (FindObjectsOfType<Trap>().Length <= 5) { // TODO: Refactor out FindObjectsOfType
+            if (FindObjectsOfType<Trap>().Length <= 3) { // TODO: Refactor out FindObjectsOfType
                 SpawnCluster(trapPrefab, 1, 2);
                 SpawnCluster(trapPrefab, 1, 2);
             }
-            nextTrapSpawnTime = Time.timeSinceLevelLoad + 10f;
+            nextTrapSpawnTime = Time.timeSinceLevelLoad + 30f;
         }
     }
 

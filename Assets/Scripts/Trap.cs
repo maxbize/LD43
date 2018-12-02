@@ -25,7 +25,7 @@ public class Trap : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other) {
         IKillable killable = other.transform.GetComponent<IKillable>();
-        if (killable != null && killable.IsFriendly()) {
+        if (killable != null) {
             killable.Kill();
             victims++;
             if (victims == maxVictims) {

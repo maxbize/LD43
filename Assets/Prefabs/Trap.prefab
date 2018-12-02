@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4811394908687716}
   - component: {fileID: 212988797719950646}
   - component: {fileID: 114270941450448626}
-  m_Layer: 17
+  m_Layer: 0
   m_Name: Trap sprite (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 4210614421722872}
   - component: {fileID: 212655205165108384}
   - component: {fileID: 114462399659613374}
-  m_Layer: 17
+  m_Layer: 0
   m_Name: Trap sprite (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57,7 +57,7 @@ GameObject:
   - component: {fileID: 23932512196762152}
   - component: {fileID: 65152122792808150}
   - component: {fileID: 114252564855756258}
-  m_Layer: 17
+  m_Layer: 0
   m_Name: Trap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 4513643946906724}
   - component: {fileID: 212550454358844870}
   - component: {fileID: 114825447072078370}
-  m_Layer: 17
+  m_Layer: 0
   m_Name: Trap sprite (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91,7 +91,7 @@ GameObject:
   - component: {fileID: 4505970715674016}
   - component: {fileID: 212538261795869350}
   - component: {fileID: 114986944368642820}
-  m_Layer: 17
+  m_Layer: 0
   m_Name: Trap sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 4432202371010498}
   - component: {fileID: 212433529511464484}
   - component: {fileID: 114083459910379326}
-  m_Layer: 17
+  m_Layer: 0
   m_Name: Trap sprite (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
