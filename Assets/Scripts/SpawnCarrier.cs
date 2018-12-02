@@ -6,6 +6,7 @@ public class SpawnCarrier : MonoBehaviour {
 
     // Set in editor
     public float coneAngle;
+    public GameObject spriteObject;
 
     private GameObject prefabToSpawn;
     private CharController charController;
@@ -26,6 +27,8 @@ public class SpawnCarrier : MonoBehaviour {
 
         transform.position = target + targetToSpawn * 20f;
         transform.rotation = Quaternion.LookRotation(target - transform.position);
+
+        spriteObject.transform.rotation = Quaternion.Euler(35, 0, Random.Range(0, 360));
     }
 
     private void FixedUpdate() {
