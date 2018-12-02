@@ -9,25 +9,28 @@ public class Projectile : MonoBehaviour {
 
     private GameObject spawner; // Who spawned me?
     private CharController charController;
+    private Vector3 direction;
 
 	// Use this for initialization
 	void Start () {
         charController = GetComponent<CharController>();
 	}
 	
-    public void Init(GameObject spawner) {
+    public void Init(GameObject spawner, Vector3 direction) {
         this.spawner = spawner;
+        this.direction = direction;
     }
 
     private void FixedUpdate() {
-        if (transform.position.y < 1f) {
+        if (transform.position.y < 1.5f) {
+            direction.y = 0;
             transform.position = new Vector3(
                 transform.position.x,
-                1,
+                1.5f,
                 transform.position.z
             );
         }
-        charController.HandleMovement(transform.forward);
+        charController.HandleMovement(direction);
     }
 
     private void OnTriggerEnter(Collider other) {

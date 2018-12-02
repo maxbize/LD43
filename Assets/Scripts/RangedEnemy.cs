@@ -43,9 +43,9 @@ public class RangedEnemy : MonoBehaviour, IKillable {
 
     // Spawn a projectile that homes in on the overlord
     private void Attack() {
-        Vector3 toOverlord = overlord.transform.position - turretArmTip.transform.position;
-        GameObject projectile = Instantiate(projectilePrefab, turretArmTip.transform.position, Quaternion.LookRotation(toOverlord));
-        projectile.GetComponent<Projectile>().Init(gameObject);
+        Vector3 toOverlord = (overlord.transform.position - turretArmTip.transform.position).normalized;
+        GameObject projectile = Instantiate(projectilePrefab, turretArmTip.transform.position, turretArm.transform.rotation);
+        projectile.GetComponent<Projectile>().Init(gameObject, toOverlord);
     }
 
     public void Kill() {
