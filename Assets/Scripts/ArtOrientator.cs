@@ -28,6 +28,10 @@ public class ArtOrientator : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if (rb == null) {
+            return; // HACK - should have disabled component
+        }
+
         float wobbleSpeedScaled = wobbleSpeed * rb.velocity.magnitude * wobbleSpeedVelocityScale;
         wobbleSpeedScaled = Mathf.Max(50f, wobbleSpeedScaled); // HACK - magic number
 
