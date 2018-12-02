@@ -21,6 +21,11 @@ public class RangedEnemy : MonoBehaviour, IKillable {
         mainCamera = FindObjectOfType<Camera>();
         nextAttackTime = Time.timeSinceLevelLoad + attackFrequency;
         overlord = FindObjectOfType<Overlord>();
+        transform.position = new Vector3(
+            transform.position.x,
+            1.7f,
+            transform.position.z
+        );
 	}
 	
 	// Update is called once per frame
