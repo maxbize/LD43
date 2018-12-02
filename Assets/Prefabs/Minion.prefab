@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4400281967268818}
   - component: {fileID: 212295280225175580}
+  - component: {fileID: 114511367227277910}
   m_Layer: 0
   m_Name: Minion sprite
   m_TagString: Untagged
@@ -148,6 +149,23 @@ MonoBehaviour:
   animationTime: 0.25
   expansionSize: 5
   hardenTime: 10
+--- !u!114 &114511367227277910
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1182405497043912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fda780f992c96ab499531b3b43c1765a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wobbleDistance: 0.2
+  wobbleAngle: 30
+  wobbleAngleModifier: 0.1
+  minWobbleSpeed: 50
+  maxWobbleSpeed: 100
+  wobbleSpeedVelocityScale: 1
 --- !u!114 &114663966101954928
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -201,9 +219,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
-  m_Height: 1.5
+  m_Height: 1.3
   m_Direction: 2
-  m_Center: {x: 0, y: -0.1, z: 0}
+  m_Center: {x: 0, y: -0.1, z: 0.25}
 --- !u!212 &212295280225175580
 SpriteRenderer:
   m_ObjectHideFlags: 1
