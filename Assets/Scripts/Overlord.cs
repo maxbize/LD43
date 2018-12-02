@@ -11,6 +11,7 @@ public class Overlord : MonoBehaviour, IKillable {
     // Movement input
     private CharController charController;
     private Vector3 input;
+    private ArenaManager arenaManager; // HACK
 
     // Keep track of our minions
     HashSet<Minion> minions = new HashSet<Minion>();
@@ -18,6 +19,7 @@ public class Overlord : MonoBehaviour, IKillable {
 	// Use this for initialization
 	void Start () {
         charController = GetComponent<CharController>();
+        arenaManager = FindObjectOfType<ArenaManager>();
 	}
 	
 	// Update is called once per frame
@@ -32,9 +34,9 @@ public class Overlord : MonoBehaviour, IKillable {
         Minion closestMinion = GetMinionClosestToMouse();
         if (closestMinion != null) {
             if (Input.GetKeyDown(KeyCode.E)) {
-                closestMinion.Harden(GetMousePos());
+                closestMinion.Harden(GetMouseArenaPos());
             } else if (Input.GetKeyDown(KeyCode.Q)) {
-                closestMinion.Kamikaze(GetMousePos());
+                closestMinion.Kamikaze(GetMouseArenaPos());
             }
         }
     }
@@ -81,6 +83,11 @@ public class Overlord : MonoBehaviour, IKillable {
         }
 
         return Vector3.zero;
+    }
+
+    // Constrained to arena bounds
+    private Vector3 GetMouseArenaPos() {
+        return arenaManager.constrainPointToArena(GetMousePos());
     }
 
     private void OnCollisionEnter(Collision collision) {

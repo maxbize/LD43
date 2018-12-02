@@ -86,4 +86,16 @@ public class ArenaManager : MonoBehaviour {
         point += ground.transform.position;
         return point;
     }
+
+    public Vector3 constrainPointToArena(Vector3 point) {
+        point -= ground.transform.position;
+        if (Mathf.Abs(point.x) > ground.transform.lossyScale.x * 4.5f) {
+            point.x = ground.transform.lossyScale.x * 4.5f * Mathf.Sign(point.x);
+        }
+        if (Mathf.Abs(point.z) > ground.transform.lossyScale.z * 4.5f) {
+            point.z = ground.transform.lossyScale.z * 4.5f * Mathf.Sign(point.z);
+        }
+        point += ground.transform.position;
+        return point;
+    }
 }
