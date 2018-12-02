@@ -13,7 +13,7 @@ public class Trap : MonoBehaviour {
 	void Start () {
         transform.position = new Vector3(
             transform.position.x,
-            0,
+            0.25f,
             transform.position.z
         );
 	}
