@@ -12,16 +12,41 @@ public class KamikazeMinion : MonoBehaviour {
     public float incendiaryTime; // therealhammer86gn might be on an FBI watchlist for knowing this ;)
 
     private float explodeAtTime = Mathf.Infinity;
+    private CharController charController;
+    private Vector3 target;
 
-	public void Init(Vector3 target) {
-        Destroy(GetComponent<Minion>());
-        explodeAtTime = Time.timeSinceLevelLoad + incendiaryTime;
-        GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
+    private KamikazeState kamikazeState;
+    private enum KamikazeState {
+        waiting,
+        moving,
+        triggered
     }
 
-    private void Update() {
-        if (Time.timeSinceLevelLoad > explodeAtTime) {
-            Explode();
+
+	public void Init(Vector3 target) {
+        charController = GetComponent<CharController>();
+        this.target = target;
+        kamikazeState = KamikazeState.moving;
+        gameObject.layer = LayerMask.NameToLayer("Ignore All");
+    }
+
+    private void FixedUpdate() {
+
+        if (kamikazeState == KamikazeState.waiting) {
+            // Do nothing
+        } else if (kamikazeState == KamikazeState.moving) {
+            Vector3 toTarget = target - transform.position;
+            toTarget.y = 0;
+            charController.HandleMovement(toTarget.normalized);
+            if (toTarget.magnitude < 0.1f) {
+                explodeAtTime = Time.timeSinceLevelLoad + incendiaryTime;
+                kamikazeState = KamikazeState.triggered;
+                //GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition; // Do we want this??
+            }
+        } else {
+            if (Time.timeSinceLevelLoad > explodeAtTime) {
+                Explode();
+            }
         }
     }
 

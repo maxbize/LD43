@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4256706211975818}
   - component: {fileID: 212068598054304038}
   - component: {fileID: 114517448224130230}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Overlord sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 114593837103269518}
   - component: {fileID: 114420013965046100}
   - component: {fileID: 136845443137282576}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Overlord
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4663021014120332}
   - component: {fileID: 212602544114038088}
   - component: {fileID: 114312542900213858}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Spawner sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 114526748796470164}
   - component: {fileID: 114655807266374674}
   - component: {fileID: 54143651804691118}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Spawn Carrier
   m_TagString: Untagged
   m_Icon: {fileID: 0}

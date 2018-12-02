@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 54128595807472730}
   - component: {fileID: 114856647982053804}
   - component: {fileID: 136233279858081188}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Melee Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 4889778023517238}
   - component: {fileID: 212327634151759898}
   - component: {fileID: 114193743338018690}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Robot sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}

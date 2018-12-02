@@ -791,6 +791,14 @@ Prefab:
       propertyPath: frictionCoefficient
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 1814878095069124, guid: 7efa9dae8c2db944d89c146249b916d5, type: 2}
+      propertyPath: m_Layer
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 1720323826624200, guid: 7efa9dae8c2db944d89c146249b916d5, type: 2}
+      propertyPath: m_Layer
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7efa9dae8c2db944d89c146249b916d5, type: 2}
   m_IsPrefabAsset: 0

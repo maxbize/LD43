@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4114176827496452}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Arm tip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,7 +36,7 @@ GameObject:
   - component: {fileID: 4567420626643680}
   - component: {fileID: 212438936112686036}
   - component: {fileID: 114947981679493044}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Body sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51,7 +51,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4048627440500960}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Arm base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68,7 +68,7 @@ GameObject:
   - component: {fileID: 4042655273373072}
   - component: {fileID: 212933688882745914}
   - component: {fileID: 114852002347413130}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Arm sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 23892807547968608}
   - component: {fileID: 136233279858081188}
   - component: {fileID: 114576534499021132}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Ranged Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -21,10 +21,10 @@ TagManager:
   - MouseCast
   - 
   - 
-  - 
-  - 
-  - 
-  - 
+  - Friendly
+  - Enemy
+  - Ignore Friendly
+  - Ignore All
   - 
   - 
   - 

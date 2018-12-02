@@ -48,8 +48,8 @@ public class Minion : MonoBehaviour, IKillable {
         }
     }
 
-    public void Harden() {
-        GetComponent<HardenedMinion>().Expand();
+    public void Harden(Vector3 target) {
+        GetComponent<HardenedMinion>().Init(target);
         if (overlord != null) {
             overlord.NotifyMinionDied(this);
         }
@@ -74,5 +74,4 @@ public class Minion : MonoBehaviour, IKillable {
     public bool IsFriendly() {
         return true;
     }
-
 }

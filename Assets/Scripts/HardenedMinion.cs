@@ -13,28 +13,45 @@ public class HardenedMinion : MonoBehaviour {
     private float doneHardeningTime;
     private float doneContractingTime;
     private Vector3 initialScale;
+    private Vector3 target;
+    private CharController charController;
 
     private ExpansionState expansionState = ExpansionState.waiting;
     private enum ExpansionState {
         waiting,
+        moving,
         expanding,
         expanded,
         contracting
     }
 
-    // Entry point for hardening
-	public void Expand() {
+    public void Init(Vector3 target) {
+        this.target = target;
+        charController = GetComponent<CharController>();
+        gameObject.layer = LayerMask.NameToLayer("Ignore All");
+        expansionState = ExpansionState.moving;
+    }
+
+	private void Expand() {
         expansionState = ExpansionState.expanding;
         doneExpandingTime = Time.timeSinceLevelLoad + animationTime;
         initialScale = transform.localScale;
         Destroy(GetComponent<Rigidbody>());
         GetComponent<CapsuleCollider>().height = 1;
+        gameObject.layer = LayerMask.NameToLayer("Ignore Friendly");
     }
-	
-	// Update is called once per frame
-	void FixedUpdate() {
-		if (expansionState == ExpansionState.waiting) {
+
+    // Update is called once per frame
+    void FixedUpdate() {
+        if (expansionState == ExpansionState.waiting) {
             // Do nothing
+        } else if (expansionState == ExpansionState.moving) {
+            Vector3 toTarget = target - transform.position;
+            toTarget.y = 0;
+            charController.HandleMovement(toTarget.normalized);
+            if (toTarget.magnitude < 0.1f) {
+                Expand();
+            }
         } else if (expansionState == ExpansionState.expanding) {
             float t = (doneExpandingTime - Time.timeSinceLevelLoad) / animationTime;
             float size = Mathf.Lerp(expansionSize, initialScale.magnitude, t);

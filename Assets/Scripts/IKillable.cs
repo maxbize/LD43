@@ -2,4 +2,5 @@
 public interface IKillable {
     void Kill();
     bool IsFriendly();
+    //bool IsInvulnerable();
 }
