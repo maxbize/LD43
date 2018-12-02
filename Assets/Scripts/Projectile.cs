@@ -20,6 +20,13 @@ public class Projectile : MonoBehaviour {
     }
 
     private void FixedUpdate() {
+        if (transform.position.y < 1f) {
+            transform.position = new Vector3(
+                transform.position.x,
+                1,
+                transform.position.z
+            );
+        }
         charController.HandleMovement(transform.forward);
     }
 

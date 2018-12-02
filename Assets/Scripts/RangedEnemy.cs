@@ -7,12 +7,18 @@ public class RangedEnemy : MonoBehaviour, IKillable {
     // Set in editor
     public float attackFrequency; // Attack every x seconds
     public GameObject projectilePrefab;
+    public GameObject turretArm;
+    public GameObject turretArmTip;
+
+    public float debug;
 
     private float nextAttackTime;
     private Overlord overlord;
+    private Camera mainCamera;
 
 	// Use this for initialization
 	void Start () {
+        mainCamera = FindObjectOfType<Camera>();
         nextAttackTime = Time.timeSinceLevelLoad + attackFrequency;
         overlord = FindObjectOfType<Overlord>();
 	}
@@ -23,9 +29,11 @@ public class RangedEnemy : MonoBehaviour, IKillable {
             return;
         }
 
-        Vector3 toOverlord = overlord.transform.position - transform.position;
-        toOverlord.y = 0;
-        transform.rotation = Quaternion.LookRotation(toOverlord);
+        Vector2 turretScreenPos = mainCamera.WorldToScreenPoint(transform.position);
+        Vector2 overlordScreenPos = mainCamera.WorldToScreenPoint(overlord.transform.position);
+        Vector2 turretToOverlord = overlordScreenPos - turretScreenPos;
+        float angle = Vector2.Angle(Vector2.right, turretToOverlord);
+        turretArm.transform.rotation = Quaternion.Euler(35, 0, turretToOverlord.y > 0 ? angle : -angle);
 
 		if (Time.timeSinceLevelLoad > nextAttackTime) {
             Attack();
@@ -35,7 +43,8 @@ public class RangedEnemy : MonoBehaviour, IKillable {
 
     // Spawn a projectile that homes in on the overlord
     private void Attack() {
-        GameObject projectile = Instantiate(projectilePrefab, transform.position + transform.forward, transform.rotation);
+        Vector3 toOverlord = overlord.transform.position - turretArmTip.transform.position;
+        GameObject projectile = Instantiate(projectilePrefab, turretArmTip.transform.position, Quaternion.LookRotation(toOverlord));
         projectile.GetComponent<Projectile>().Init(gameObject);
     }
 
