@@ -780,6 +780,17 @@ Prefab:
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 534669904}
+    - target: {fileID: 136845443137282576, guid: 7efa9dae8c2db944d89c146249b916d5,
+        type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 8e9d5cd0eba4a9d4ca0ca658fb3be54b,
+        type: 2}
+    - target: {fileID: 114420013965046100, guid: 7efa9dae8c2db944d89c146249b916d5,
+        type: 2}
+      propertyPath: frictionCoefficient
+      value: 30
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7efa9dae8c2db944d89c146249b916d5, type: 2}
   m_IsPrefabAsset: 0
