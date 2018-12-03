@@ -20,21 +20,26 @@ public class ArenaManager : MonoBehaviour {
     private float nextDifficultyRampTime;
     private int difficulty = 0;
     private Overlord overlord;
+    private GameManager gameManager;
 
 	// Use this for initialization
 	void Start () {
+        overlord = FindObjectOfType<Overlord>();
+        gameManager = FindObjectOfType<GameManager>();
+	}
+
+    public void StartGame() {
         SpawnCluster(minionPrefab, 5, 5);
         PlaySpawnClip();
         nextMeleeEnemySpawnTime = Time.timeSinceLevelLoad + 5f;
         nextMinionSpawnTime = Time.timeSinceLevelLoad + 10f;
         nextRangedEnemySpawnTime = Time.timeSinceLevelLoad + 60f;
         nextTrapSpawnTime = Time.timeSinceLevelLoad + 30f;
-        overlord = FindObjectOfType<Overlord>();
-	}
+    }
 	
 	// Update is called once per frame
 	void Update () {
-        if (overlord == null) {
+        if (overlord == null || !gameManager.gameStarted) {
             return;
         }
 
@@ -57,8 +62,8 @@ public class ArenaManager : MonoBehaviour {
         }
 
         if (Time.timeSinceLevelLoad > nextMeleeEnemySpawnTime) {
-            int min = 2 + Mathf.FloorToInt(difficulty * 2f);
-            int max = 3 + Mathf.FloorToInt(difficulty * 2f);
+            int min = 2 + Mathf.FloorToInt(difficulty * 1.8f);
+            int max = 3 + Mathf.FloorToInt(difficulty * 1.8f);
             SpawnCluster(meleeEnemyPrefab, min, max);
             SpawnCluster(meleeEnemyPrefab, min, max);
             nextMeleeEnemySpawnTime = Time.timeSinceLevelLoad + 9f;

@@ -17,7 +17,7 @@ public class StatsManager : MonoBehaviour {
         ResetStats();
 	}
 
-    private void ResetStats() {
+    public static void ResetStats() {
         minionsDied = 0;
         meleeEnemiesDied = 0;
         rangedEnemiesDied = 0;

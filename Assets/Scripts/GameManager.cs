@@ -9,7 +9,9 @@ public class GameManager : MonoBehaviour {
 
     // Set in editor
     public GameObject endGameScreen;
+    public GameObject startGameScreen;
     public Text endGameText;
+    public bool gameStarted;
 
 	// Use this for initialization
 	void Start () {
@@ -25,7 +27,7 @@ public class GameManager : MonoBehaviour {
         endGameScreen.SetActive(true);
         int scrapDestroyed = StatsManager.meleeEnemiesDied + StatsManager.rangedEnemiesDied + StatsManager.trapsDestroyed;
         if (scrapDestroyed == 0) {
-            endGameText.text = "You did not sacrifice any of your minions to protect yourself. You are" +
+            endGameText.text = "You did not sacrifice any of your minions to protect yourself.\nYou are" +
                 " a benevolent king.\nBut\n<b>Sacrifices must be made!</b>";
         } else {
             endGameText.text = string.Format("You sacrificed {0} of your minions to clean up {1} " +
@@ -38,5 +40,13 @@ public class GameManager : MonoBehaviour {
     public void RestartGame() {
         int scene = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(scene, LoadSceneMode.Single);
+    }
+
+    // Called from UI
+    public void StartGame() {
+        FindObjectOfType<ArenaManager>().StartGame();
+        startGameScreen.SetActive(false);
+        gameStarted = true;
+        StatsManager.ResetStats();
     }
 }
