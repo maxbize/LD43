@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 54128595807472730}
   - component: {fileID: 114856647982053804}
   - component: {fileID: 136233279858081188}
+  - component: {fileID: 82773148097736344}
   m_Layer: 19
   m_Name: Minion
   m_TagString: Untagged
@@ -135,6 +136,101 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!82 &82773148097736344
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1616473119905936}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 63f01a494ea07db4d85ac9f53fd7063d, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &114058606275034910
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -148,8 +244,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animationTime: 0.25
   expansionSize: 5
-  hardenTime: 10
+  hardenTime: 7.5
   shieldSprite: {fileID: 21300000, guid: 8053a8fec0d966546bbed4cfa8413566, type: 3}
+  expandClip: {fileID: 8300000, guid: 7a88573d19dffa4449ebf6f67edb8081, type: 3}
+  deflateClip: {fileID: 8300000, guid: c012e028c87b936408c28f226df2916d, type: 3}
 --- !u!114 &114511367227277910
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -180,6 +278,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controlDistance: 5
   claimedMat: {fileID: 2100000, guid: 80db15930aefd754883cdcefbe3f6bbd, type: 2}
+  deathClip: {fileID: 8300000, guid: ed01a8949d2c1504ca22886df1857d12, type: 3}
+  dispatchClip: {fileID: 8300000, guid: 61b7e025ddebe7840aa89f96b8fc080b, type: 3}
 --- !u!114 &114856647982053804
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -213,6 +313,8 @@ MonoBehaviour:
   incendiaryTime: 3
   explostionDuration: 0.1
   explodedSprite: {fileID: 21300000, guid: 01abdd2b9cdc06a4388e9cfc2e04d31c, type: 3}
+  beepClip: {fileID: 8300000, guid: f5fb2f10b03d45443aba22cb7a9a2912, type: 3}
+  boomClip: {fileID: 8300000, guid: 9aeebe048184dc94a8b3153d6485d751, type: 3}
 --- !u!136 &136233279858081188
 CapsuleCollider:
   m_ObjectHideFlags: 1

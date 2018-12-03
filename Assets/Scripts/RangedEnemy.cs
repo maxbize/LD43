@@ -9,6 +9,8 @@ public class RangedEnemy : MonoBehaviour, IKillable {
     public GameObject projectilePrefab;
     public GameObject turretArm;
     public GameObject turretArmTip;
+    public AudioClip deathClip;
+    public AudioClip shootClip;
 
     public float debug;
 
@@ -51,9 +53,12 @@ public class RangedEnemy : MonoBehaviour, IKillable {
         Vector3 toOverlord = (overlord.transform.position - turretArmTip.transform.position).normalized;
         GameObject projectile = Instantiate(projectilePrefab, turretArmTip.transform.position, turretArm.transform.rotation);
         projectile.GetComponent<Projectile>().Init(gameObject, toOverlord);
+        Minion.PlayClip(shootClip, transform.position, 0.9f, 1.1f);
     }
 
     public void Kill() {
+        StatsManager.rangedEnemiesDied++;
+        Minion.PlayClip(deathClip, transform.position, 0.9f, 1.1f);
         Destroy(gameObject);
     }
 

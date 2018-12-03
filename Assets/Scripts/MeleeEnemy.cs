@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class MeleeEnemy : MonoBehaviour, IKillable {
 
+    // Set in editor
+    public AudioClip deathClip;
+
     private Overlord overlord;
     private CharController charController;
 
@@ -27,12 +30,12 @@ public class MeleeEnemy : MonoBehaviour, IKillable {
     }
 
     private void OnCollisionEnter(Collision collision) {
-        if (collision.transform.GetComponent<Overlord>() != null) {
-            Kill();
-        }
+        // Handled in other classes
     }
 
     public void Kill() {
+        StatsManager.meleeEnemiesDied++;
+        Minion.PlayClip(deathClip, transform.position, 0.9f, 1.1f);
         Destroy(gameObject);
     }
 

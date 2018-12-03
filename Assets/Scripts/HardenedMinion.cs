@@ -9,6 +9,8 @@ public class HardenedMinion : MonoBehaviour {
     public float expansionSize; // Scale fully expanded
     public float hardenTime; // How long to stay hardened
     public Sprite shieldSprite;
+    public AudioClip expandClip;
+    public AudioClip deflateClip;
 
     private float doneExpandingTime;
     private float doneHardeningTime;
@@ -41,6 +43,10 @@ public class HardenedMinion : MonoBehaviour {
         GetComponent<CapsuleCollider>().height = 1;
         gameObject.layer = LayerMask.NameToLayer("Ignore Friendly");
         transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = shieldSprite; // HACK!
+        AudioSource audioSource = GetComponent<AudioSource>();
+        audioSource.clip = expandClip;
+        audioSource.pitch = Random.Range(1.25f, 1.75f);
+        audioSource.Play();
     }
 
     // Update is called once per frame
@@ -66,6 +72,7 @@ public class HardenedMinion : MonoBehaviour {
             if (Time.timeSinceLevelLoad > doneHardeningTime) {
                 expansionState = ExpansionState.contracting;
                 doneContractingTime = Time.timeSinceLevelLoad + animationTime;
+                Minion.PlayClip(deflateClip, transform.position, 1.25f, 1.75f);
             }
         } else if (expansionState == ExpansionState.contracting) {
             float t = (doneContractingTime - Time.timeSinceLevelLoad) / animationTime;

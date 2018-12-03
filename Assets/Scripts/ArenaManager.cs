@@ -11,6 +11,7 @@ public class ArenaManager : MonoBehaviour {
     public GameObject rangedEnemyPrefab;
     public GameObject trapPrefab;
     public GameObject ground;
+    public AudioClip deliveryClip;
 
     private float nextMeleeEnemySpawnTime;
     private float nextMinionSpawnTime;
@@ -23,6 +24,7 @@ public class ArenaManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         SpawnCluster(minionPrefab, 5, 5);
+        PlaySpawnClip();
         nextMeleeEnemySpawnTime = Time.timeSinceLevelLoad + 5f;
         nextMinionSpawnTime = Time.timeSinceLevelLoad + 10f;
         nextRangedEnemySpawnTime = Time.timeSinceLevelLoad + 60f;
@@ -42,7 +44,7 @@ public class ArenaManager : MonoBehaviour {
 
         if (Time.timeSinceLevelLoad > nextDifficultyRampTime) {
             difficulty++;
-            nextDifficultyRampTime = Time.timeSinceLevelLoad + 30f;
+            nextDifficultyRampTime = Time.timeSinceLevelLoad + 40f;
         }
 
         if (Time.timeSinceLevelLoad > nextMinionSpawnTime) {
@@ -51,6 +53,7 @@ public class ArenaManager : MonoBehaviour {
             SpawnCluster(minionPrefab, min, max);
             SpawnCluster(minionPrefab, min, max);
             nextMinionSpawnTime = Time.timeSinceLevelLoad + 5f;
+            PlaySpawnClip();
         }
 
         if (Time.timeSinceLevelLoad > nextMeleeEnemySpawnTime) {
@@ -59,23 +62,29 @@ public class ArenaManager : MonoBehaviour {
             SpawnCluster(meleeEnemyPrefab, min, max);
             SpawnCluster(meleeEnemyPrefab, min, max);
             nextMeleeEnemySpawnTime = Time.timeSinceLevelLoad + 9f;
+            PlaySpawnClip();
         }
 
         if (Time.timeSinceLevelLoad > nextRangedEnemySpawnTime) {
-            int numToSpawn = difficulty;
             for (int i = 0; i < difficulty; i++) {
                 SpawnSomething(rangedEnemyPrefab, GetRandomPointInArena());
             }
+            PlaySpawnClip();
             nextRangedEnemySpawnTime = Time.timeSinceLevelLoad + 30f;
         }
 
         if (Time.timeSinceLevelLoad > nextTrapSpawnTime) {
             if (FindObjectsOfType<Trap>().Length <= 3) { // TODO: Refactor out FindObjectsOfType
+                PlaySpawnClip();
                 SpawnCluster(trapPrefab, 1, 2);
                 SpawnCluster(trapPrefab, 1, 2);
             }
             nextTrapSpawnTime = Time.timeSinceLevelLoad + 30f;
         }
+    }
+
+    private void PlaySpawnClip() {
+        Minion.PlayClip(deliveryClip, Vector3.zero, 1.25f, 1.75f);
     }
 
     private void SpawnCluster(GameObject prefab, int min, int max) {

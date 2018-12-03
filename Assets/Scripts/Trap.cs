@@ -6,6 +6,7 @@ public class Trap : MonoBehaviour {
 
     // Set in editor
     public int maxVictims;
+    public AudioClip destroyedClip;
 
     private int victims = 0;
 
@@ -29,6 +30,8 @@ public class Trap : MonoBehaviour {
             killable.Kill();
             victims++;
             if (victims == maxVictims) {
+                StatsManager.trapsDestroyed++;
+                Minion.PlayClip(destroyedClip, transform.position, 0.9f, 1.1f);
                 Destroy(gameObject);
             }
         }

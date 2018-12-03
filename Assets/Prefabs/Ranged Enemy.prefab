@@ -221,6 +221,8 @@ MonoBehaviour:
     type: 2}
   turretArm: {fileID: 1519200512144344}
   turretArmTip: {fileID: 1249117507917794}
+  deathClip: {fileID: 8300000, guid: 4c1ae82ec1c9cb640bf0a2872b506c71, type: 3}
+  shootClip: {fileID: 8300000, guid: 9093f7366be65a44592e4818a768ce8a, type: 3}
   debug: 0
 --- !u!114 &114852002347413130
 MonoBehaviour:

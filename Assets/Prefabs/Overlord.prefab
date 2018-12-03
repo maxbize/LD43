@@ -146,7 +146,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   acceleration: 80
   dragCoefficient: 0.5
-  frictionCoefficient: 10
+  frictionCoefficient: 30
   extraGravityMultiplier: 3
 --- !u!114 &114517448224130230
 MonoBehaviour:
@@ -177,13 +177,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 0}
+  deathClip: {fileID: 8300000, guid: 3afe5ef652b7297409cc67f4b9327ad4, type: 3}
 --- !u!136 &136845443137282576
 CapsuleCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1814878095069124}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 8e9d5cd0eba4a9d4ca0ca658fb3be54b, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5

@@ -7,6 +7,7 @@ public class Overlord : MonoBehaviour, IKillable {
 
     // Set in editor
     public Camera mainCamera;
+    public AudioClip deathClip;
 
     // Movement input
     private CharController charController;
@@ -105,6 +106,8 @@ public class Overlord : MonoBehaviour, IKillable {
     }
 
     public void Kill() {
+        Minion.PlayClip(deathClip, transform.position, 1.25f, 1.75f);
+        FindObjectOfType<GameManager>().EndGame();
         Destroy(gameObject);
     }
 

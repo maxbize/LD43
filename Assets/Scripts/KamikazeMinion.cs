@@ -12,6 +12,8 @@ public class KamikazeMinion : MonoBehaviour {
     public float incendiaryTime; // therealhammer86gn might be on an FBI watchlist for knowing this ;)
     public float explostionDuration; // visual
     public Sprite explodedSprite;
+    public AudioClip beepClip;
+    public AudioClip boomClip;
 
     private float explodeAtTime = Mathf.Infinity;
     private float destroyAtTime = Mathf.Infinity;
@@ -19,6 +21,7 @@ public class KamikazeMinion : MonoBehaviour {
     private Vector3 target;
     private Material spriteMaterial;
     private Color startingColor;
+    private bool beepedThisSin;
 
     private KamikazeState kamikazeState;
     private enum KamikazeState {
@@ -47,18 +50,29 @@ public class KamikazeMinion : MonoBehaviour {
             if (toTarget.magnitude < 0.1f) {
                 explodeAtTime = Time.timeSinceLevelLoad + incendiaryTime;
                 kamikazeState = KamikazeState.triggered;
+                GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
             }
         } else if (kamikazeState == KamikazeState.triggered) {
             float t = 1f - (explodeAtTime - Time.timeSinceLevelLoad) / incendiaryTime;
-            spriteMaterial.color = new Color(startingColor.r + Mathf.Sin(Time.timeSinceLevelLoad + (1 + 7 * t) * (1 + 7 * t)), 
-                startingColor.g, startingColor.b);
+            float sin = Mathf.Sin(Time.timeSinceLevelLoad + (1 + 7 * t) * (1 + 7 * t));
+            if (beepedThisSin) {
+                if (sin < 0.8f) {
+                    beepedThisSin = false;
+                }
+            } else {
+                if (sin > 0.8f) {
+                    Minion.PlayClip(beepClip, transform.position, 1.25f + 0.5f * t, 1.25f + 0.5f * t);
+                    beepedThisSin = true;
+                }
+            }
+            spriteMaterial.color = new Color(startingColor.r + sin, startingColor.g, startingColor.b);
             if (Time.timeSinceLevelLoad > explodeAtTime) {
                 Explode();
                 destroyAtTime = Time.timeSinceLevelLoad + explostionDuration;
                 transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = explodedSprite;
-                GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition; // Do we want this??
                 transform.localScale *= (deathRadius + pushRadius) / 2f;
                 kamikazeState = KamikazeState.exploded;
+                Minion.PlayClip(boomClip, transform.position, 1.25f, 1.75f);
             }
         } else if (kamikazeState == KamikazeState.exploded) {
             if (Time.timeSinceLevelLoad > destroyAtTime) {

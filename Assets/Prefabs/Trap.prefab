@@ -281,6 +281,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxVictims: 5
+  destroyedClip: {fileID: 8300000, guid: 4bdccca9642c8e4468ebed3c6a4d21b1, type: 3}
 --- !u!114 &114270941450448626
 MonoBehaviour:
   m_ObjectHideFlags: 1

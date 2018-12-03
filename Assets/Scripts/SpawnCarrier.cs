@@ -7,6 +7,7 @@ public class SpawnCarrier : MonoBehaviour {
     // Set in editor
     public float coneAngle;
     public GameObject spriteObject;
+    public AudioClip spawnClip;
 
     private GameObject prefabToSpawn;
     private CharController charController;
@@ -46,7 +47,7 @@ public class SpawnCarrier : MonoBehaviour {
         }
 
         Instantiate(prefabToSpawn, transform.position + Vector3.up * 3, Quaternion.identity);
-
+        Minion.PlayClip(spawnClip, transform.position, 0.9f, 1.1f);
         Destroy(gameObject);
     }
 }
